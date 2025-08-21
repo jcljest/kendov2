@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="men" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 471.78 459.03">
+  <style>
+    /* Default: black */
+    svg { color: #000; }
+    /* Dark mode: white */
+    @media (prefers-color-scheme: dark) {
+      svg { color: #fff; }
+    }
+
+    /* Shapes use currentColor */
+    .cls-fill { fill: currentColor; }
+    .cls-stroke {
+      fill: none;
+      stroke: currentColor;
+      stroke-miterlimit: 10;
+      stroke-width: 15px;
+    }
+  </style>
+
+  <polygon class="cls-fill" points="114.14 100.85 312.45 46.61 114.14 39.83 114.14 100.85"/>
+  <polygon class="cls-fill" points="104.54 147.77 302.84 90.14 302.84 274.32 104.54 147.77"/>
+  <polygon class="cls-fill" points="111.32 187.85 289.28 318.93 262.91 439.83 69.97 385.59 111.32 187.85"/>
+  <polygon class="cls-fill" points="311.88 327.96 365.55 377.12 328.83 385.59 311.88 327.96"/>
+  <path class="cls-stroke" d="M348.89,62.43s69.49,64.41,62.15,136.72c-7.34,72.32-62.15,110.17-62.15,110.17V62.43Z"/>
+  <line class="cls-stroke" x1="348.89" y1="122.31" x2="394.62" y2="122.31"/>
+  <line class="cls-stroke" x1="351.99" y1="172.6" x2="410.49" y2="172.6"/>
+  <line class="cls-stroke" x1="351.99" y1="223.44" x2="406.83" y2="223.44"/>
+  <line class="cls-stroke" x1="351.99" y1="264.69" x2="387.37" y2="264.69"/>
+</svg>
