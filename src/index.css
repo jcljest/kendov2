@@ -1,1 +1,139 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ========== 1) THEME TOKENS (Tailwind v4.1 CSS-first) ========== */
+@theme {
+  /* Font family */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Type scale (keeps Tailwind's required namespaces) */
+  --text-title:   2rem;     /* 32px */
+  --text-heading: 1.5rem;   /* 24px */
+  --text-subhead: 1.25rem;  /* 20px */
+  --text-body:    1rem;     /* 16px */
+  --text-meta:    0.875rem; /* 14px */
+
+  /* Line heights (unitless) */
+  --leading-title:   1.15;
+  --leading-heading: 1.20;
+  --leading-subhead: 1.25;
+  --leading-body:    1.45;
+  --leading-meta:    1.35;
+
+  /* Letter spacing */
+  --tracking-title:   -0.02em;
+  --tracking-heading: -0.015em;
+  --tracking-subhead: -0.01em;
+  --tracking-body:     0em;
+  --tracking-meta:     0em;
+
+  /* Rhythm + measure */
+  --spacing-rhythm-1: 16px; /* tight pair */
+  --spacing-rhythm-2: 32px; /* separate groups */
+  --container-measure: 600px; /* ~70 chars */
+
+  /* -------- HSL color system (lightness-driven) -------- */
+  --h: 220deg;
+  --s: 10%;
+
+  /* Light mode lightness */
+  --L-bg:      100%;
+  --L-surface: 96%;
+  --L-title:   95%;
+  --L-text:    70%;
+  --L-muted:   60%;
+
+  /* Domain-prefixed color variables to avoid collisions with --text-* */
+  --color-bg:        hsl(var(--h) var(--s) var(--L-bg));
+  --color-surface:   hsl(var(--h) var(--s) var(--L-surface));
+  --color-ink-strong:hsl(var(--h) var(--s) var(--L-title)); /* headings */
+  --color-ink:       hsl(var(--h) var(--s) var(--L-text));  /* body */
+  --color-ink-muted: hsl(var(--h) var(--s) var(--L-muted)); /* meta */
+}
+
+/* Dark mode: if you're keeping inversion, flip lightness here.
+   (Consider setting explicit L-values for text to maintain contrast.) */
+:root.dark {
+  --L-bg:      calc(100% - 100%); /* 0%   */
+  --L-surface: calc(100% - 96%);  /* 4%   */
+  --L-title:   calc(100% - 95%);  /* 5%   */
+  --L-text:    calc(100% - 70%);  /* 30%  */
+  --L-muted:   calc(100% - 60%);  /* 40%  */
+}
+
+/* ========== 2) BASE LAYER (global inheritance + defaults; no @apply) ========== */
+@layer base {
+  html { font-family: var(--font-sans); }
+
+  body {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-body);
+    color: var(--color-ink);
+    background-color: var(--color-bg);
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Paragraph rhythm */
+  p + p { margin-top: 12px; }
+}
+
+/* ========== 3) UTILITIES (semantic type + helpers; no @apply) ========== */
+@layer utilities {
+  /* Measure + proximity helpers */
+  .prose-measure { max-width: var(--container-measure); }
+  .flow-tight > * + * { margin-top: var(--spacing-rhythm-1); }
+  .flow-loose > * + * { margin-top: var(--spacing-rhythm-2); }
+
+  /* Semantic typography presets — pure CSS via tokens (inherit color by default) */
+  .t-title {
+    font-family: var(--font-sans);
+    font-size: var(--text-title);
+    line-height: var(--leading-title);
+    letter-spacing: var(--tracking-title);
+    font-weight: 700;
+    /* color: var(--color-ink-strong);  ← uncomment if you want fixed heading color */
+  }
+
+  .t-heading {
+    font-family: var(--font-sans);
+    font-size: var(--text-heading);
+    line-height: var(--leading-heading);
+    letter-spacing: var(--tracking-heading);
+    font-weight: 600;
+    /* color: var(--color-ink-strong); */
+  }
+
+  .t-subhead {
+    font-family: var(--font-sans);
+    font-size: var(--text-subhead);
+    line-height: var(--leading-subhead);
+    letter-spacing: var(--tracking-subhead);
+    font-weight: 600;
+    /* color: var(--color-ink-strong); */
+  }
+
+  .t-body {
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    letter-spacing: var(--tracking-body);
+    font-weight: 400;
+    /* color: var(--color-ink); */
+  }
+
+  .t-meta {
+    font-family: var(--font-sans);
+    font-size: var(--text-meta);
+    line-height: var(--leading-meta);
+    letter-spacing: var(--tracking-meta);
+    font-weight: 500;
+    color: var(--color-ink-muted);
+  }
+}
+/* ========== 4) OPTIONAL: prefix (if you ever need it) ========== */
+/* Uncomment to prefix all Tailwind classes (v4 requires colon separator) */
+/* @prefix ui;  -> use like: class="ui:text-body ui:leading-body" */
