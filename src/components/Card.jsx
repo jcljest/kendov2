@@ -48,6 +48,15 @@ const Card = ({
     `
   };
 
+
+  const Root = href ? (Link) : (as || "div");
+  const rootProps = href ? { to: href } : {};
+
+  // If children are supplied, keep legacy behavior 100%
+  const legacy = children != null;
+
+
+
   return (
     <div
       className={`${baseClasses} ${variantClasses[variant]} ${className}`}

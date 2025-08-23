@@ -1,0 +1,110 @@
+/* Import Tailwind – this brings in Preflight, theme, utilities, etc. */
+@import "tailwindcss";
+
+/* --- Custom Theme Tokens (colors, fonts, spacing, etc.) --- */
+@theme {
+  /* Palette (example) */
+  --color-slate-950: #0f172a;
+  --color-slate-100: #f1f5f9;
+  --color-red-muted: #be123c;
+  --color-bamboo-gold: #e1c16e;
+
+  /* Typography */
+  --font-ui: "Inter", "Source Sans Pro", sans-serif;
+  --font-heading: "Noto Serif JP", serif;
+  --font-size-h1: 2.25rem;
+  --font-size-h2: 1.75rem;
+  --line-height-body: 1.7;
+
+  /* Spacing */
+  --spacing-section: 4rem;
+}
+
+/* --- Prose Styling (Layer on top of Tailwind's Preflight) --- */
+@layer base {
+  h1 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h1);
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  h2 {
+    font-family: var(--font-heading);
+    font-size: var(--font-size-h2);
+    font-weight: bold;
+    letter-spacing: 0.02em;
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  p {
+    font-family: var(--font-ui);
+    line-height: var(--line-height-body);
+    margin-bottom: 1em;
+    max-width: 60ch;
+  }
+  img {
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px 0 rgba(16,16,16,0.09);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  pre, code {
+    background-color: var(--color-slate-950);
+    color: var(--color-slate-100);
+    border-radius: 0.5rem;
+    padding: 0.25em 0.5em;
+  }
+  blockquote {
+    font-style: italic;
+    color: var(--color-red-muted);
+    border-left: 4px solid var(--color-bamboo-gold);
+    margin: 1.5em 0;
+    padding-left: 1em;
+    background: rgba(225,193,110,0.04);
+  }
+  body {
+    background-color: var(--color-slate-950);
+    color: var(--color-slate-100);
+    font-family: var(--font-ui);
+  }
+}
+
+/* --- Accessibility (contrast, focus, skip to content, etc.) --- */
+@layer base {
+  :focus {
+    outline: 2px solid var(--color-red-muted);
+    outline-offset: 2px;
+  }
+  .skip-to-content {
+    position: absolute;
+    left: -1000px;
+    top: 8px;
+    background: var(--color-bamboo-gold);
+    color: var(--color-slate-950);
+    padding: 0.5rem 1rem;
+    z-index: 100;
+  }
+  .skip-to-content:focus {
+    left: 8px;
+  }
+}
+
+/* --- Example Utility Layer for Custom Components --- */
+@layer components {
+  .clip-card {
+    background: var(--color-slate-950);
+    border-radius: 1rem;
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,0.09);
+    padding: 2rem;
+    transition: transform 0.1s;
+  }
+  .clip-card:hover,
+  .clip-card:focus {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 8px 24px 0 rgba(0,0,0,0.16);
+  }
+}
+
+/* --- You can further extend colors, fonts, etc. with more @theme or @layer rules. --- */
