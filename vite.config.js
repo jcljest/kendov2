@@ -16,7 +16,11 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
-    setupFiles: './src/setupTests.js',
+    setupFiles: './src/test/setupTests.js',
+    include: ['src/**/?(*.){test,spec}.{js,jsx,ts,tsx}'],
+    exclude: ['**/*.stories.*', 'node_modules', 'dist'],
+    css: true,
+    restoreMocks: true,
     projects: [{
       extends: true,
       plugins: [

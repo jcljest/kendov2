@@ -1,11 +1,8 @@
-import { Link } from "react-router-dom";
-
 const Card = ({ 
   children, 
   variant = 'default',
   className = '',
-  href,
-  as,
+  as: Root = "div", // consumer can override element type if needed
   ...props 
 }) => {
 
@@ -54,32 +51,14 @@ const Card = ({
   };
 
 
-  const Root = href ? (Link) : (as || "div");
-  const rootProps = href ? { to: href } : {};
-
-  // If children are supplied, keep legacy behavior 100%
-  const legacy = children != null;
-
-
-
   return (
-    <Root
-    className={`${baseClasses} ${variantClasses[variant]} ${className}`}
-    {...rootProps}
-    {...props}
-  >
-    <div
+  <Root
       className={`${baseClasses} ${variantClasses[variant]} ${className}`}
       {...props}
     >
-      <div className="relative z-10 p-6">
-        {children}
-      </div>
-    </div>
+      <div className="relative z-10 p-6">{children}</div>
     </Root>
   );
-
-
 };
 
 export default Card;

@@ -2,14 +2,14 @@
 import { useMemo, useState, useEffect } from "react";
 import { MDXProvider } from '@mdx-js/react'
 
-import Button from './components/Button.jsx';
-import Card from './components/Card.jsx';
+import Button from '../components/Button.jsx';
+import Card from '../components/Card.jsx';
 import './index.css';
 
 
 // App.jsx (router setup)
-import BlogPost from './pages/BlogPost'
-import Home from './pages/Home'
+import BlogPost from '../pages/BlogPost.jsx'
+import Home from '../pages/Home.jsx'
 
 
 

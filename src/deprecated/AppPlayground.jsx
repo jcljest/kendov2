@@ -1,8 +1,8 @@
 
 import { useMemo, useState, useEffect } from "react";
 
-import Button from './components/Button.jsx';
-import Card from './components/Card.jsx';
+import Button from '../components/Button.jsx';
+import Card from '../components/Card.jsx';
 import './index.css';
 
 const AppPlayground = () => {

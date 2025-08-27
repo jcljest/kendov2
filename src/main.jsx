@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { StrictMode } from 'react'
 
 import './index.css'
-import App from './App.jsx'
+
 
 // Pages (we’ll make them next)
 import RootLayout from './layouts/RootLayout.jsx'

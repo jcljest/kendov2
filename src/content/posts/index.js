@@ -12,6 +12,6 @@ export const postsIndex = [
     title: 'Kote → Men Sequence',
     excerpt: 'Decision tree + slow-mo.',
     date: '2025-08-23',
-    thumb: '/images/kote-men.jpg',
+    thumb: '/images/kote.png',
   },
 ];

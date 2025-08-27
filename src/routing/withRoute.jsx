@@ -24,3 +24,5 @@ export function withRoute(Component) {
     );
   });
 }
+
+export default withRoute;
