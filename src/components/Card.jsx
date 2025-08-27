@@ -1,9 +1,14 @@
+import { Link } from "react-router-dom";
+
 const Card = ({ 
   children, 
   variant = 'default',
   className = '',
+  href,
+  as,
   ...props 
 }) => {
+
   const baseClasses = `
     relative
     rounded-2xl
@@ -58,6 +63,11 @@ const Card = ({
 
 
   return (
+    <Root
+    className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+    {...rootProps}
+    {...props}
+  >
     <div
       className={`${baseClasses} ${variantClasses[variant]} ${className}`}
       {...props}
@@ -66,6 +76,7 @@ const Card = ({
         {children}
       </div>
     </div>
+    </Root>
   );
 
 
